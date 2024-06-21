@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <script>
+        // 기본으로 꼭 하기
+        $(document).ready(() => {
+
+        // 탐색: selector, filter()
+        // $(selector).filter(selector)  
+        // $(selector).filter(callback)  / selector를 찾고, filter로 각 item을 받음
+            $('table tr').filter(':even').css('background-color', 'orange') // filter(':even'): 홀수  / 체이닝?
+
+            $('h2').css('width', '300px').css('background', 'yellow').filter(':odd').css('color', 'white') // odd: 짝수 / 한 줄에 여러 스타일 가능
+
+            $('h1').css('margin', 'auto').css('width', '300px').eq(3).css('color', 'red') // eq: 해당되는 index 선택
+            $('h1').first().css('background', 'green')
+            $('h1').last().css('background', 'green')
+
+            $('h3').filter((index, item) => {
+                console.log(index, item)
+                return index % 3 == 0
+            }).css('color', 'blue')
+            
+        })
+        
+    </script>
+</head>
+<body>
+
+    <h3> header 113 </h3>
+    <h3> header 223 </h3>
+    <h3> header 333 </h3>
+    <h3> header 443 </h3>
+    <h3> header 553 </h3>
+    <h3> header 663 </h3>
+    <h3> header 773 </h3>
+    <h3> header 883 </h3>
+    <h3> header 993 </h3>
+
+
+    <h1> header 1 </h1>
+    <h1> header 1 </h1>
+    <h1> header 1 </h1>
+    <h1> header 1 </h1>
+    <h1> header 1 </h1>
+
+
+    <h2> header 2 </h2>
+    <h2> header 2 </h2>
+    <h2> header 2 </h2>
+    <h2> header 2 </h2>
+    <h2> header 2 </h2>
+    <h2> header 2 </h2>
+
+
+    <!-- table > tr : tbody가 생성 / table tr 로 하기  -->
+    <table border="1">
+        <tr>
+            <td>111</td>
+            <td>222</td>
+        </tr>
+        <tr>
+            <td>111</td>
+            <td>222</td>
+        </tr>
+        <tr>
+            <td>111</td>
+            <td>222</td>
+        </tr>
+        <tr>
+            <td>111</td>
+            <td>222</td>
+        </tr>
+        <tr>
+            <td>111</td>
+            <td>222</td>
+        </tr>
+        <tr>
+            <td>111</td>
+            <td>222</td>
+        </tr>
+    </table>
+    
+</body>
+</html>

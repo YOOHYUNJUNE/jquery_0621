@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 객체 생성</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <style>
+        .img {
+            border: 3px solid red;
+            /* background-color: yellow; */
+        }
+    </style>
+
+    <script>
+        $().ready(() => {
+            
+            // 문서 객체 생성
+
+            $('<h1></h1>').html('안녕하세요 1').appendTo('body') // $('<h1>안녕하세요</h1>')
+            $('<h1>안녕하세요 2</h1>').appendTo('body') // appendTo: 추가할 곳
+
+            // $(A).appendTo(B)     : 타깃 B
+            // $(A).prependTo(B)    : 타깃 B
+            // $(A).append(B)       :  타깃 A
+            // $(A).prepend(B)      :  타깃 A
+            // $('<img>').attr('src', '/image/button.png').addClass('img').appendTo('body')
+            $('<img>').attr('src', '/image/button.png').addClass('img').prependTo('body') // 맨 위로 보냄
+
+            
+            // $(selector).append(content, content, content ....)  // 가변매개변수
+            // $(selector).append((index) => {})
+
+            let html1 = '<a href="#">test</a>'
+            let html2 = '<p>TEST</p>'
+            let html3 = '<div>Div_Test</div>'
+
+            $('body').append(html1, html2, html3, '<hr>')
+
+
+            // kiosk 예시
+            let productList = []
+            let cart = [] // 제품 이름, 가격 등이 들어갈 예정
+
+
+            // body에 틀을 만들고, 객체의 내용을 넣기
+            // 객체 'member'
+            let links = [
+                {name : '네이버', url : 'https://www.naver.com'},
+                {name : '구글', url : 'https://www.google.com'},
+                {name : '페이스북', url : 'https://www.facebook.com'}
+            ]
+
+            // 객체를 #list에 넣기
+            $.each(links, function(index, item) {
+
+                let html = 
+                `
+                <tr>
+                    <td>${item.url}</td>
+                    <td>${item.name}</td>
+                </tr>
+                `
+
+                $('#list').append(html)
+            })
+
+
+        })
+    </script>
+
+</head>
+<body>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>경로</th>
+                <th>비고</th>
+            </tr>
+        </thead>
+        <tbody id="list"></tbody>
+
+    </table>
+    
+</body>
+</html>

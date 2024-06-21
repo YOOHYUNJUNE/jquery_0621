@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <script>
+        // parsing: 데이터를 자신이 사용할 형태로 바꾸는것
+
+        let xml = `
+            <links>
+                <link>
+                    <name>네이버</name>
+                    <url>https://www.naver.com</url>
+                </link>
+                <link>
+                    <name>구글</name>
+                    <url>https://www.google.com</url>
+                </link>
+                <link>
+                    <name>페이스북</name>
+                    <url>https://www.facebook.com</url>
+                </link>
+            </links>
+        `
+
+        $().ready(() =>{
+            // 문자열 -> xml 문서 객체로 변환 / $.parseXML(문자열)
+            let xmlDoc = $.parseXML(xml)
+
+            // 빈 공간 생성(body 넣을 것임)
+            let html_doc = ''
+
+
+            // 요소를 찾는 메서드: find(요소 이름) 'link'
+            $(xmlDoc).find('link').each((index, item) => {
+                console.log(index, item)
+                // find한 요소를 가져오기
+                let name = $(item).find('name').text() 
+                let url = $(item).find('url').text()
+                console.log(name, ':', url)
+                // $(this) // this: 자신(item 생략가능) 
+
+                html_doc +=`
+                <div class='box'>
+                    <h1>${name}</h1>
+                    <p>${url}</p>
+                </div>
+                `
+            })
+
+            $('body').html(html_doc)
+
+        })
+    </script>
+    <style>
+        .box {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

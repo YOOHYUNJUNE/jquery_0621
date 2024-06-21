@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <style>
+        .box {
+            background-color: aqua;
+            color: brown;
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            margin: 10px;
+        }
+        .title {
+            text-align: center;
+        }
+
+    </style>
+    <script>
+
+        // 문서 개체 컨트롤
+        // css(), attr(), removeAttr(): 속성 제거
+        // addClass(): class 추가, removeClass()
+        // html(), text(), remove(): 요소 제거, empty(): 요소 내부 비움
+        
+        $().ready(() => {
+
+            // addClass: class추가
+            // $('h2').addClass('box')
+
+            // removeClass: class제거
+            // $('h2').removeClass('title')
+
+            // attr: 속성 변경 (getter)
+            console.log('경로:', $('a').attr('href'))
+            $('a').attr('href', 'https://www.facebook.com') // naver -> facebook
+            // $('img').attr('src', '/image/button.png') // 빈 이미지 -> 경로설정
+            
+            // 'img' 태그 전체에 속성 추가
+            // $('img').attr({
+            //     src : '/image/button.png',
+            //     width : 100,
+            //     height : 100
+            // })
+
+            $('img').attr('height', (index) => { // function에는 height에 해당하는 자연수가 들어가야함
+                return (index + 1) * 100
+            })
+            $('img').last().removeAttr('src')
+            
+            // attr(속성이름) : read
+            // attr(속성이름, 값) : set
+            // attr(속성이름, callback) : set
+            // attr({}) : 여러개 속성을 한번에 설정
+
+            // css(속성이름) : read
+            // css(속성이름, 값 || callback) : set
+            // css({}) : 여러개 속성을 한번에 설정
+
+            // html() : innerHtml  /  console에는 태그까지 가져옴
+            // text() : textContent
+
+
+            // read
+            console.log('html() => ', $('#menu1').html()) // 태그까지 가져옴
+            console.log('text() => ', $('#menu2').text())
+
+            // 내용 변경
+            // $('#menu1').html('<h1>안녕하세요</h1>') 
+            // $('#menu2').text('<h1>안녕하세요</h1>') // 화면에는 태그까지 가져옴
+
+            // div 내용 변경
+            $('div').html(function(index, html) {
+                console.log(index, html) // \n        <span>Menu Text1</span>\n    '
+                $(this).html(`<h1>${html + index}</h1>`)
+            })
+
+
+            // 엘리먼트 삭제 : 부모에게 삭제 요청
+            $('#menu3').remove() // 삭제
+            $('#menu2').empty() // 내용만 삭제
+
+
+        })
+
+    </script>
+</head>
+<body>
+
+    <div id="menu1">
+        <span>Menu Text1</span>
+    </div>
+    <div id="menu2">
+        <span>Menu Text2</span>
+    </div>
+    <div id="menu3">
+        <span>Menu Text3</span>
+    </div>
+
+    <img src="/image/button.png">
+    <img src="/image/button.png">
+    <img src="/image/button.png">
+    <img src="/image/button.png">
+
+    <a href="https://www.naver.com">naver</a>
+
+    <h2 class="title">box - 1</h2>
+    <h2 class="title">box - 1</h2>
+    <h2 class="title">box - 1</h2>
+    <h2 class="title">box - 1</h2>
+    <h2 class="title">box - 1</h2>
+
+    
+</body>
+</html>
