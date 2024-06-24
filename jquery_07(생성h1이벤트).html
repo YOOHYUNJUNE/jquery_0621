@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <style>
+        h1 {
+            border: 1px solid black;
+            margin: 10px;
+        }
+
+    </style>
+    <script>
+    $(document).ready(function() {
+            
+        // $('h1').click(function() {
+        //     let length = $('h1').length // 몇 번째 h1인지 확인
+        //     let html = $(this).html() // 어떤 html을 대상으로 했는지 확인
+        //     // h1을 추가 생성
+        //     $('#wrap').append(`<h1>${length}-${html}</h1>`)
+        // })
+
+        // 생성된 콘텐츠에도 이벤트를 적용
+        $('#wrap').on('click', 'h1', function() {
+            // let length = $('h1').length
+            let html = $(this).html()
+            $('#wrap').append(`<h1>${html}</h1>`)
+            // $('#wrap').append(`<h1>${length} - ${html}</h1>`)
+        })
+
+            
+
+
+
+
+
+    })
+    </script>
+</head>
+<body>
+
+    <!-- 이벤트: h1을 추가로 만들고, 이벤트까지 적용되게 하기 -->
+    <div id="wrap">
+        <h1>header - 0</h1>
+    </div>
+
+</body>
+</html>

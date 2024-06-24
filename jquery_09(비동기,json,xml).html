@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax비동기통신</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <script>
+        $().ready(() => {
+            // $.ajax({options})
+            // $.ajax(url, {options})
+
+            // // json
+            // $.ajax('/data.json', { // json을 string이 아닌 객체[]로 자동 변경
+            //     success: function(data) { // 통신 성공시(http code: 200) callback
+            //         console.log('타입:', typeof(data))
+            //         console.log('데이터:', data)
+            //         // $('body').append(data)
+
+            //         // 데이터를 가져와서 브라우저에 출력
+            //         data.forEach(item => {
+            //             $('body').append(`<h1>${item.name} : ${item.price}</h1>`)
+            //         });
+            //     }, // 통신 실패시
+            //     error: function(request, status, error) {
+            //         console.log(request)
+            //         console.log(status)
+            //         console.log(error)
+            //     }
+            // })
+
+
+            // xml
+            $.ajax('/data.xml', {
+                success: function(data) { // 통신 성공시(http code: 200) callback
+                    console.log('타입:', typeof(data))
+                    console.log('데이터:', data)
+                    // $('body').append(data)
+
+                    // // 데이터를 가져와서 브라우저에 출력
+                    // data.forEach(item => {
+                    //     $('body').append(`<h1>${item.name} : ${item.price}</h1>`)
+                    // });
+
+                    // xml parsing
+                    $(data).find('product').each(function() {
+                        let name = $(this).find('name').text()
+                        let price = $(this).find('price').text()
+
+                        // 데이터를 가져와서 브라우저에 출력
+                        $('body').append(`<h1>${name} : ${price}</h1>`)
+                    })
+
+                }, // 통신 실패시
+                error: function(request, status, error) {
+                    console.log(request)
+                    console.log(status)
+                    console.log(error)
+                }
+            })
+
+            
+
+
+
+
+
+
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

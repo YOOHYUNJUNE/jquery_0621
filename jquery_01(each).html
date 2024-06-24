@@ -17,9 +17,9 @@
             // })
 
             $('h2').css('color', 'blue') // setter: (키,값)
-            // getter (키워드만): $('h2').css('color')
+            // $('h2').css('color') : getter (키만)
             // 캐스팅.메서드
-            // 캐스팅: jqeury객체 생성
+            // 캐스팅: jqeury객체 생성(메서드)
             
             // input casting
             // $('input[type=text]').val('안녕하세요') // setter
@@ -65,7 +65,7 @@
 
             // 웹 페이지에 들어갈 링크 만들기
             // document.querySelector('#links').innerHTML=output
-            $('#links').html(output)
+            $('#links').html(output) // jQuery.html()
 
 
             $('h2').each(function(index, item) {

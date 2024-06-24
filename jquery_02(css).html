@@ -13,7 +13,9 @@
         // 탐색: selector, filter()
         // $(selector).filter(selector)  
         // $(selector).filter(callback)  / selector를 찾고, filter로 각 item을 받음
-            $('table tr').filter(':even').css('background-color', 'orange') // filter(':even'): 홀수  / 체이닝?
+
+        // table > tr : tbody가 생성 / table tr 로 하기 
+            $('table tr').filter(':even').css('background-color', 'orange') // filter(':even'): 0부터 홀수 번째  / 체이닝?
 
             $('h2').css('width', '300px').css('background', 'yellow').filter(':odd').css('color', 'white') // odd: 짝수 / 한 줄에 여러 스타일 가능
 
@@ -21,7 +23,7 @@
             $('h1').first().css('background', 'green')
             $('h1').last().css('background', 'green')
 
-            $('h3').filter((index, item) => {
+            $('h3').filter((index, item) => { // (item) 만 할 경우 index로 적용됨
                 console.log(index, item)
                 return index % 3 == 0
             }).css('color', 'blue')
